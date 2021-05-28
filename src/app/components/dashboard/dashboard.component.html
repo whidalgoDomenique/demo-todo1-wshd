@@ -1,0 +1,49 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="new-background-color">
+   <ion-buttons slot="start">
+     <ion-button (click)="toggleMenu()">
+       <ion-icon slot="icon-only" name="menu"></ion-icon>
+     </ion-button>
+   </ion-buttons>
+    <ion-title class="header-center">
+      Cuentas
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+
+  <div class="spinner-center">
+    <ion-spinner class="spinner-space" *ngIf="isLoading" name="crescent" color="secondary"></ion-spinner>
+  </div>
+
+  <div *ngIf="!isLoading" style="margin-top: 40px;">
+    <ion-label class="title-card">Mis Cuentas e Inversiones
+    </ion-label>
+
+    <ion-card>
+      <ion-card-content>
+        <ion-row style="width: -webkit-fill-available;"  *ngFor="let lst of cuentas; let i = index"
+          [ngClass]="{'border': i < cuentas.length - 1  }">
+          <ion-col>
+            <ion-item lines="none">
+              <ion-label class="cuenta">{{lst.tipo == 'corriente' ? 'Cuenta Corriente' : 'Cuenta de Ahorros'}}
+              </ion-label>
+            </ion-item>
+
+            <ion-item lines="none">
+              <ion-label style="margin-top: -16px;">{{ lst.numero }}
+              </ion-label>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item lines="none">
+              <ion-label class="saldos">{{lst.saldo | number: '.2-2'}}
+              </ion-label>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

@@ -1,0 +1,7 @@
+{
+  "name": "test-todo1-wshd",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
